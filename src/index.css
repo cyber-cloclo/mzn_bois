@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f1e16;
+  color: #e8f5e0;
+}
+
+a {
+  text-decoration: none;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
