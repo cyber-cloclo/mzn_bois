@@ -1,5 +1,5 @@
-//import { useState } from 'react'
-//import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const i18n = {
   fr: {
@@ -43,7 +43,7 @@ export default function Login() {
     setErrPwd(!pwdOk)
     if (!emailOk || !pwdOk) return
     setLoading(true)
-    setTimeout(() => { setSuccess(true); setTimeout(() => navigate('/dashboard'), 800) }, 1200)
+    setTimeout(() => { setSuccess(true); setTimeout(() => navigate('/app/dashboard'), 800) }, 1200)
   }
 
   return (
@@ -224,7 +224,15 @@ export default function Login() {
 
           {/* Footer */}
           <div style={{ textAlign: 'center', fontSize: '12px', color: '#888' }}>
-            <p style={{ marginBottom: '6px' }}>{t.noAccount} <a href="#" style={{ color: '#1a3328', fontWeight: 600 }}>{t.request}</a></p>
+            <p style={{ marginBottom: '6px' }}>
+              {t.noAccount}{' '}
+              <span
+                onClick={() => navigate('/inscription')}
+                style={{ color: '#1a3328', fontWeight: 600, cursor: 'pointer' }}
+              >
+                {t.request}
+              </span>
+            </p>
             <a href="#" style={{ color: '#aaa' }}>{t.legal}</a>
           </div>
         </div>
@@ -232,3 +240,4 @@ export default function Login() {
     </div>
   )
 }
+

@@ -60,7 +60,7 @@ export default function Dashboard() {
           <button style={{ background: 'none', border: 'none', fontSize: '20px', cursor: 'pointer', position: 'relative' }}>
             🔔<span style={{ position: 'absolute', top: 2, right: 2, width: 8, height: 8, background: '#dc2626', borderRadius: '50%', display: 'block' }} />
           </button>
-          <button onClick={() => navigate('/commandes/nouvelle')} style={{
+          <button onClick={() => navigate('/app/commandes/nouvelle')} style={{
             background: '#c9a84c', border: 'none', borderRadius: '8px',
             padding: '8px 16px', fontWeight: 600, fontSize: '13px',
             color: '#1a1a1a', cursor: 'pointer'
@@ -119,7 +119,7 @@ export default function Dashboard() {
                 <span style={{ ...s.cardTitle }}>Commandes récentes</span>
                 <span style={{ fontSize: '13px', color: '#8a8a8a' }}> — 5 actives</span>
               </div>
-              <button onClick={() => navigate('/commandes')} style={{ background: 'none', border: 'none', fontSize: '13px', color: '#c9a84c', fontWeight: 600, cursor: 'pointer' }}>Voir tout →</button>
+              <button onClick={() => navigate('/app/commandes')} style={{ background: 'none', border: 'none', fontSize: '13px', color: '#c9a84c', fontWeight: 600, cursor: 'pointer' }}>Voir tout →</button>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -192,7 +192,7 @@ export default function Dashboard() {
                   <span style={{ fontSize: '13px', fontWeight: 600, color: r.color }}>{r.val}</span>
                 </div>
               ))}
-              <button onClick={() => navigate('/paiements')} style={{
+              <button onClick={() => navigate('/app/paiements')} style={{
                 width: '100%', marginTop: '16px', padding: '10px',
                 background: 'rgba(201,168,76,.15)', border: '1px solid rgba(201,168,76,.3)',
                 borderRadius: '8px', color: '#c9a84c', fontWeight: 600, fontSize: '13px', cursor: 'pointer'

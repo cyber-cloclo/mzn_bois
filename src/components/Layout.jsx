@@ -3,9 +3,9 @@ import Sidebar from './Sidebar'
 
 function Layout() {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#0f1e16' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#f5f0e8' }}>
       <Sidebar />
-      <main style={{ flex: 1, padding: '32px' }}>
+      <main style={{ flex: 1, marginLeft: '220px', minHeight: '100vh' }}>
         <Outlet />
       </main>
     </div>

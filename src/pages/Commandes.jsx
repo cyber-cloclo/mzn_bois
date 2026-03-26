@@ -93,7 +93,7 @@ export default function Commandes() {
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button onClick={exportCSV} style={{ padding: '8px 14px', border: '1.5px solid #e3ddd2', borderRadius: '9px', background: '#fff', fontSize: '13px', fontWeight: 500, cursor: 'pointer' }}>⬇ Export CSV</button>
-          <button onClick={() => navigate('/commandes/nouvelle')} style={{ padding: '9px 18px', background: '#1a3328', color: '#fff', border: 'none', borderRadius: '9px', fontSize: '13px', fontWeight: 500, cursor: 'pointer' }}>＋ Nouvelle commande</button>
+          <button onClick={() => navigate('/app/commandes/nouvelle')} style={{ padding: '9px 18px', background: '#1a3328', color: '#fff', border: 'none', borderRadius: '9px', fontSize: '13px', fontWeight: 500, cursor: 'pointer' }}>＋ Nouvelle commande</button>
         </div>
       </header>
 

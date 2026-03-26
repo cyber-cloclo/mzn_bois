@@ -110,7 +110,7 @@ export default function NouvelleCommande() {
             <div style={{ width:'6px', height:'6px', borderRadius:'50%', background: saveState==='saving'?'#c9a84c':saveState==='saved'?'#16a34a':'#9ca3af', transition:'background .3s' }} />
             {saveState==='saving'?'Sauvegarde…':saveState==='saved'?'Brouillon sauvegardé':'Brouillon'}
           </div>
-          <button onClick={() => navigate('/commandes')} style={{ padding:'8px 16px', border:'1.5px solid #e3ddd2', borderRadius:'9px', background:'#fff', fontSize:'13px', fontWeight:500, cursor:'pointer' }}>← Annuler</button>
+          <button onClick={() => navigate('/app/commandes')} style={{ padding:'8px 16px', border:'1.5px solid #e3ddd2', borderRadius:'9px', background:'#fff', fontSize:'13px', fontWeight:500, cursor:'pointer' }}>← Annuler</button>
         </div>
       </header>
 
@@ -407,7 +407,7 @@ export default function NouvelleCommande() {
             <div style={{ display:'flex', gap:'12px', justifyContent:'center' }}>
               <button onClick={() => { setConfirmed(false); setForm({essence:'',grade:'',vol:'',inco:'',port:'',date:'',notes:''}); setStep(0); setPhotos([]) }}
                 style={{ padding:'12px 24px', background:'#c9a84c', border:'none', borderRadius:'10px', fontWeight:600, fontSize:'14px', cursor:'pointer' }}>Nouvelle commande</button>
-              <button onClick={() => navigate('/commandes')}
+              <button onClick={() => navigate('/app/commandes')}
                 style={{ padding:'12px 24px', background:'#fff', border:'1.5px solid #e3ddd2', borderRadius:'10px', fontWeight:500, fontSize:'14px', cursor:'pointer' }}>Voir mes commandes</button>
             </div>
           </div>
