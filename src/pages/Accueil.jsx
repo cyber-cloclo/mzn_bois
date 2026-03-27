@@ -89,6 +89,17 @@ export default function Accueil() {
         .btn-gold:hover { background: #e2c46e; transform: translateY(-1px); }
         .btn-outline-gold { background: transparent; color: #c9a84c; border: 1.5px solid rgba(201,168,76,.5); border-radius: 10px; padding: 12px 28px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; transition: all .2s; }
         .btn-outline-gold:hover { background: rgba(201,168,76,.1); border-color: #c9a84c; }
+        .social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); cursor:pointer; transition: background .2s, border-color .2s, transform .15s; text-decoration:none; }
+        .social-btn:hover { background:rgba(201,168,76,.15); border-color:rgba(201,168,76,.4); transform:translateY(-2px); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: #f5f0e8; border-radius: 2px; transition: all .3s; }
+        .mobile-menu { display: none; position: fixed; top: 68px; left: 0; right: 0; background: rgba(10,26,18,.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,.15); padding: 16px 24px 24px; flex-direction: column; gap: 4px; z-index: 199; }
+        @media (max-width: 768px) {
+          .nav-links-desktop { display: none !important; }
+          .nav-btn-desktop { display: none !important; }
+          .hamburger { display: flex !important; }
+          .mobile-menu { display: flex; }
+        }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0a1a12; }
         ::-webkit-scrollbar-thumb { background: #1a3328; border-radius: 10px; }
@@ -115,17 +126,34 @@ export default function Accueil() {
         </div>
 
         {/* Liens nav desktop */}
-        <div style={{ display:'flex', alignItems:'center', gap:'32px' }}>
+        <div className="nav-links-desktop" style={{ display:'flex', alignItems:'center', gap:'32px' }}>
           <span className="nav-link" onClick={() => scrollTo('essences')}>Essences</span>
           <span className="nav-link" onClick={() => scrollTo('about')}>Qui sommes-nous</span>
           <span className="nav-link" onClick={() => scrollTo('contact')}>Contact</span>
         </div>
 
-        {/* Bouton connexion */}
-        <button className="btn-gold" onClick={() => navigate('/login')} style={{ padding:'9px 22px', fontSize:'13px' }}>
+        {/* Bouton connexion desktop */}
+        <button className="btn-gold nav-btn-desktop" onClick={() => navigate('/login')} style={{ padding:'9px 22px', fontSize:'13px' }}>
           🔑 Connexion client
         </button>
+
+        {/* Bouton hamburger mobile */}
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <span style={{ transform: menuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+          <span style={{ opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ transform: menuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
+        </div>
       </nav>
+
+      {/* Menu mobile */}
+      {menuOpen && (
+        <div className="mobile-menu">
+          <span className="nav-link" onClick={() => scrollTo('essences')} style={{ padding:'12px 8px', borderBottom:'1px solid rgba(255,255,255,.06)' }}>Essences</span>
+          <span className="nav-link" onClick={() => scrollTo('about')} style={{ padding:'12px 8px', borderBottom:'1px solid rgba(255,255,255,.06)' }}>Qui sommes-nous</span>
+          <span className="nav-link" onClick={() => scrollTo('contact')} style={{ padding:'12px 8px', borderBottom:'1px solid rgba(255,255,255,.06)' }}>Contact</span>
+          <button className="btn-gold" onClick={() => { navigate('/login'); setMenuOpen(false) }} style={{ marginTop:'12px', width:'100%' }}>🔑 Connexion client</button>
+        </div>
+      )}
 
       {/* ═══ HERO ═══ */}
       <section style={{ position:'relative', height:'100vh', minHeight:'680px', display:'flex', alignItems:'center', overflow:'hidden' }}>
@@ -296,9 +324,29 @@ export default function Accueil() {
                 <div style={{ fontSize:'9px', color:'#c9a84c', letterSpacing:'.14em', textTransform:'uppercase' }}>Négoce & Export</div>
               </div>
             </div>
-            <p style={{ fontSize:'13px', fontWeight:300, lineHeight:1.8, color:'rgba(245,240,232,.45)', maxWidth:'300px' }}>
+            <p style={{ fontSize:'13px', fontWeight:300, lineHeight:1.8, color:'rgba(245,240,232,.45)', maxWidth:'300px', marginBottom:'20px' }}>
               Export de bois tropicaux certifiés depuis le Port d'Owendo. Partenaire de confiance pour les importateurs des 5 continents.
             </p>
+
+            {/* Réseaux sociaux */}
+            <div style={{ display:'flex', gap:'10px' }}>
+              {/* Facebook */}
+              <a href="#" className="social-btn" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5f0e8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              {/* WhatsApp */}
+              <a href="#" className="social-btn" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#f5f0e8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </a>
+              {/* X / Twitter */}
+              <a href="#" className="social-btn" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#f5f0e8"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              {/* YouTube */}
+              <a href="#" className="social-btn" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#f5f0e8"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#071210"/></svg>
+              </a>
+            </div>
           </div>
 
           {/* Contact */}
